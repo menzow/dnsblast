@@ -238,7 +238,7 @@ update_status(const Context * const context)
         rate = context->pps;
     }
     printf("Sent: [%lu] - Received: [%lu] - Reply rate: [%llu pps] - "
-           "Ratio: [%.2f%%]  \r",
+           "Ratio: [%.2f%%]  \n",
            context->sent_packets, context->received_packets, rate,
            (double) context->received_packets * 100.0 /
            (double) context->sent_packets);
@@ -376,7 +376,7 @@ main(int argc, char *argv[])
     freeaddrinfo(ai);
     assert(close(sock) == 0);
     update_status(&context);
-    putchar('\n');
+    fflush(stdout);
 
     return 0;
 }
